@@ -1,0 +1,12 @@
+## Glowing Bear
+##
+
+image: jkaberg/glowingbear
+
+hostUrl: glowingbear.example.com
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+

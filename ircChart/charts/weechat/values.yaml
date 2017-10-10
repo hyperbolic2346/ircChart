@@ -1,0 +1,15 @@
+## Gate
+##
+
+image: jkaberg/weechat
+imagePullPolicy: Always
+hostUrl: weechat-gateway.example.com
+
+persistence:
+  existingClaim: weechat
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+
