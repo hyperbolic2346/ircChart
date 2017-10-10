@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "weechat.fullname" . }}
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.hostUrl }}
+    secretName: "{{ template "weechat.fullname" . }}-cert"
+  rules:
+  - host: {{ .Values.hostUrl }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "weechat.fullname" . }}
+          servicePort: 80
+

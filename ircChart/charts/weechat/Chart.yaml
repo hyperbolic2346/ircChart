@@ -1,0 +1,8 @@
+appVersion: 1.0.0
+description: Weechat
+engine: gotpl
+maintainers:
+- email: knobby@burntsheep.com
+  name: Mike Wilson
+name: weechat
+version: 1.0.0

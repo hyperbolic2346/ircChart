@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "weechat.fullname" . }}
+  labels:
+    app: {{ template "weechat.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ template "weechat.fullname" . }}
+    spec:
+      containers:
+      - name: {{ template "weechat.fullname" . }}
+        image: "{{ .Values.image }}"
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        stdin: true
+        tty: true
+        ports:
+        - name: weechat
+          containerPort: 9000
+        volumeMounts:
+        - name: weechat
+          mountPath: /weechat
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      volumes:
+      - name: weechat
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim }}

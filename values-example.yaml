@@ -1,0 +1,16 @@
+## Glowing Bear/Weechat
+##
+
+# weechat
+weechat:
+  persistence:
+    existingClaim: weechat
+  hostUrl: weechat.example.com
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+
+glowingBear:
+  enabled: true
+  hostUrl: glowingbear.example.com

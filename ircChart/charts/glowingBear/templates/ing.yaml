@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "gb.fullname" . }}
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.hostUrl }}
+    secretName: gb-cert
+  rules:
+  - host: {{ .Values.hostUrl }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "gb.fullname" . }}
+          servicePort: 80
+

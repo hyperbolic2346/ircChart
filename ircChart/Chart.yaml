@@ -1,0 +1,11 @@
+name: ircChart
+version: 1.0.0
+description: helm chart to install weechat with glowing bear for persistent irc access via glowing bear ingress
+keywords:
+- irc
+- weechat
+- glowing bear
+maintainers:
+- name: Mike Wilson
+  email: knobby@burntsheep.com
+engine: gotpl
