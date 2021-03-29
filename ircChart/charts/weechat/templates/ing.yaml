@@ -1,9 +1,15 @@
+{{- $values := .Values.ingress -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "weechat.fullname" . }}
   annotations:
-    kubernetes.io/tls-acme: "true"
+  {{- if $values.annotations }}
+  annotations:
+    {{- with $values.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
 spec:
   tls:
   - hosts:

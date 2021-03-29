@@ -1,7 +1,7 @@
 ## Glowing Bear
 ##
 
-image: jkaberg/glowingbear
+image: 10.0.1.14:5000/glowingbear
 
 hostUrl: glowingbear.example.com
 
@@ -10,3 +10,5 @@ resources:
     memory: 256Mi
     cpu: 100m
 
+annotations:
+  kubernetes.io/tls-acme: "true"

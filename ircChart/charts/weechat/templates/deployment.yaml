@@ -29,5 +29,11 @@ spec:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
       - name: weechat
-        persistentVolumeClaim:
-          claimName: {{ .Values.persistence.existingClaim }}
+{{- if .Values.persistence.existingClaim }}
+{{- /* Always prefer an existingClaim if that is set */}}
+      persistentVolumeClaim:
+        claimName: {{ .Values.persistence.existingClaim }}
+{{- else -}}
+      persistentVolumeClaim:
+        claimName: {{ include "weechat.fullname" . }}
+{{- end }}

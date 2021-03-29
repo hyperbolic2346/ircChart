@@ -2,8 +2,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "gb.fullname" . }}
+  {{- with .Values.annotations }}
   annotations:
-    kubernetes.io/tls-acme: "true"
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   tls:
   - hosts:
